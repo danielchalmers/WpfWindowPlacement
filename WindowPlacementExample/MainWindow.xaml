@@ -1,0 +1,41 @@
+﻿<Window x:Class="WindowPlacementExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowPlacementExample"
+        xmlns:properties="clr-namespace:WindowPlacementExample.Properties"
+        mc:Ignorable="d"
+        Title="Window Placement Example"
+        Closed="Window_Closed"
+        xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
+        wp:WindowPlacementProperties.TrackPlacement="True"
+        wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static properties:Settings.Default}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="0"
+                    Content="Manual _Save"
+                    Click="ManualSaveButton_Click" />
+
+            <Button Grid.Column="1"
+                    Content="Manual _Load"
+                    Click="ManualLoadButton_Click" />
+        </Grid>
+
+        <TextBlock Grid.Row="1"
+                   Text="Placement is saved on window close and loaded on window initialize by attached property"
+                   HorizontalAlignment="Center"
+                   FontSize="16"
+                   TextWrapping="Wrap" />
+    </Grid>
+</Window>
