@@ -7,11 +7,11 @@ namespace WpfWindowPlacement
     [StructLayout(LayoutKind.Sequential)]
     public struct WindowPlacement
     {
-        public int length;
-        public int flags;
-        public int showCmd;
-        public Point minPosition;
-        public Point maxPosition;
-        public Rect normalPosition;
+        public int Length;
+        public int Flags;
+        public int ShowCommand;
+        public Point MinimizedPosition;
+        public Point MaximizedPosition;
+        public Rect NormalBounds;
     }
 }

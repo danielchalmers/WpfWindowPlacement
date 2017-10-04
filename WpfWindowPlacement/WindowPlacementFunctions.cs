@@ -20,12 +20,12 @@ namespace WpfWindowPlacement
 
         public static void SetPlacement(IntPtr windowHandle, WindowPlacement placement)
         {
-            placement.length = Marshal.SizeOf(typeof(WindowPlacement));
+            placement.Length = Marshal.SizeOf(typeof(WindowPlacement));
 
             // Restore window to normal state if minimized.
-            if (placement.showCmd == NativeMethods.SW_SHOWMINIMIZED)
+            if (placement.ShowCommand == NativeMethods.SW_SHOWMINIMIZED)
             {
-                placement.showCmd = NativeMethods.SW_SHOWNORMAL;
+                placement.ShowCommand = NativeMethods.SW_SHOWNORMAL;
             }
 
             NativeMethods.SetWindowPlacement(windowHandle, ref placement);
