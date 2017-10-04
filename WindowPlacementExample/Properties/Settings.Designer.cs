@@ -27,23 +27,23 @@ namespace WindowPlacementExample.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
 <WindowPlacement xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <length>0</length>
-  <flags>0</flags>
-  <showCmd>0</showCmd>
-  <minPosition>
+  <Length>0</Length>
+  <Flags />
+  <ShowCommand>Hide</ShowCommand>
+  <MinimizedPosition>
     <X>0</X>
     <Y>0</Y>
-  </minPosition>
-  <maxPosition>
+  </MinimizedPosition>
+  <MaximizedPosition>
     <X>0</X>
     <Y>0</Y>
-  </maxPosition>
-  <normalPosition>
+  </MaximizedPosition>
+  <NormalBounds>
     <Left>0</Left>
     <Top>0</Top>
     <Right>0</Right>
     <Bottom>0</Bottom>
-  </normalPosition>
+  </NormalBounds>
 </WindowPlacement>")]
         public global::WpfWindowPlacement.WindowPlacement MainWindowPlacement {
             get {
