@@ -11,12 +11,13 @@ namespace WpfWindowPlacement
     public struct WindowPlacement
     {
         /// <summary>
-        /// The length of the structure, in bytes.
+        /// <para>The length of the structure, in bytes.</para>
+        /// <para>This is automatically set in <see cref="WindowPlacementFunctions"/> methods.</para>
         /// </summary>
         public int Length;
 
         /// <summary>
-        /// The flags that control the position of the minimized window and the method by which the window is restored. This member can be one or more of the following values.
+        /// The flags that control the position of the minimized window and the method by which the window is restored.
         /// </summary>
         public WindowPlacementFlags Flags;
 
@@ -36,7 +37,7 @@ namespace WpfWindowPlacement
         public Point MaximizedPosition;
 
         /// <summary>
-        /// The window's coordinates when the window is in the restored position.
+        /// The window's bounds when the window is in the restored position.
         /// </summary>
         public Rectangle NormalBounds;
     }
