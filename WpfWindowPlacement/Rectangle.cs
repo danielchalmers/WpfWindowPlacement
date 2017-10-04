@@ -8,7 +8,7 @@ namespace WpfWindowPlacement
     /// </summary>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
-    public struct Rect
+    public struct Rectangle
     {
         /// <summary>
         /// The x-coordinate of the upper-left corner of the rectangle.
@@ -30,7 +30,7 @@ namespace WpfWindowPlacement
         /// </summary>
         public int Bottom;
 
-        public Rect(int left, int top, int right, int bottom)
+        public Rectangle(int left, int top, int right, int bottom)
         {
             Left = left;
             Top = top;

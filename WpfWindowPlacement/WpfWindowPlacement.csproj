@@ -61,7 +61,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Rect.cs" />
+    <Compile Include="Rectangle.cs" />
     <Compile Include="WindowPlacementFlags.cs" />
     <Compile Include="WindowPlacementFunctions.cs" />
     <Compile Include="WindowPlacement.cs" />

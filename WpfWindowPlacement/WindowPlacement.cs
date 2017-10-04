@@ -38,6 +38,6 @@ namespace WpfWindowPlacement
         /// <summary>
         /// The window's coordinates when the window is in the restored position.
         /// </summary>
-        public Rect NormalBounds;
+        public Rectangle NormalBounds;
     }
 }
