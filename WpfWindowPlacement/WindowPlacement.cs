@@ -18,12 +18,12 @@ namespace WpfWindowPlacement
         /// <summary>
         /// The flags that control the position of the minimized window and the method by which the window is restored. This member can be one or more of the following values.
         /// </summary>
-        public int Flags;
+        public WindowPlacementFlags Flags;
 
         /// <summary>
         /// The current show state of the window.
         /// </summary>
-        public int ShowCommand;
+        public WindowPlacementShowCommands ShowCommand;
 
         /// <summary>
         /// The coordinates of the window's upper-left corner when the window is minimized.
