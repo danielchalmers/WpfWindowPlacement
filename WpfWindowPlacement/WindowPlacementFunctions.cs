@@ -9,7 +9,11 @@ namespace WpfWindowPlacement
     {
         public static WindowPlacement GetPlacement(IntPtr windowHandle)
         {
-            NativeMethods.GetWindowPlacement(windowHandle, out WindowPlacement placement);
+            var placement = new WindowPlacement
+            {
+                Length = Marshal.SizeOf(typeof(WindowPlacement))
+            };
+            NativeMethods.GetWindowPlacement(windowHandle, out placement);
             return placement;
         }
 
