@@ -17,7 +17,7 @@ namespace WpfWindowPlacement
             return placement;
         }
 
-        public static WindowPlacement GetPlacement(Window window)
+        public static WindowPlacement GetPlacement(this Window window)
         {
             return GetPlacement(new WindowInteropHelper(window).Handle);
         }
@@ -35,7 +35,7 @@ namespace WpfWindowPlacement
             NativeMethods.SetWindowPlacement(windowHandle, ref placement);
         }
 
-        public static void SetPlacement(Window window, WindowPlacement placement)
+        public static void SetPlacement(this Window window, WindowPlacement placement)
         {
             SetPlacement(new WindowInteropHelper(window).Handle, placement);
         }
