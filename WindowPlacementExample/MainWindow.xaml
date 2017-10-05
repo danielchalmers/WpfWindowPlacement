@@ -7,19 +7,24 @@
         xmlns:properties="clr-namespace:WindowPlacementExample.Properties"
         mc:Ignorable="d"
         Title="Window Placement Example"
+        Height="300"
+        Width="500"
+        FontSize="24"
         Closed="Window_Closed"
         xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
-        wp:WindowPlacementProperties.TrackPlacement="True"
-        wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static properties:Settings.Default}}">
-    <Grid>
+        wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static properties:Settings.Default}}"
+        wp:WindowPlacementProperties.TrackPlacement="True">
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="5" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
@@ -27,15 +32,13 @@
                     Content="Manual _Save"
                     Click="ManualSaveButton_Click" />
 
-            <Button Grid.Column="1"
+            <Button Grid.Column="2"
                     Content="Manual _Load"
                     Click="ManualLoadButton_Click" />
         </Grid>
 
-        <TextBlock Grid.Row="1"
-                   Text="Placement is saved on window close and loaded on window initialize by attached property"
-                   HorizontalAlignment="Center"
-                   FontSize="16"
-                   TextWrapping="Wrap" />
+        <Viewbox Grid.Row="2">
+            <TextBlock Text="Placement is got and set automatically by attached property" />
+        </Viewbox>
     </Grid>
 </Window>

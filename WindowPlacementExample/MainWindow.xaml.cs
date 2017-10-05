@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using WindowPlacementExample.Properties;
+using WpfWindowPlacement;
 
 namespace WindowPlacementExample
 {
@@ -21,13 +22,14 @@ namespace WindowPlacementExample
 
         private void ManualSaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Settings.Default.MainWindowPlacement = WpfWindowPlacement.WindowPlacementFunctions.GetPlacement(this);
+            Settings.Default.MainWindowPlacement = WindowPlacementFunctions.GetPlacement(this);
+
             Settings.Default.Save();
         }
 
         private void ManualLoadButton_Click(object sender, RoutedEventArgs e)
         {
-            WpfWindowPlacement.WindowPlacementFunctions.SetPlacement(this, Settings.Default.MainWindowPlacement);
+            WindowPlacementFunctions.SetPlacement(this, Settings.Default.MainWindowPlacement);
         }
     }
 }
