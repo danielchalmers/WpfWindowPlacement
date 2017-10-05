@@ -24,6 +24,12 @@ namespace WpfWindowPlacement
 
         public static void SetPlacement(IntPtr windowHandle, WindowPlacement placement)
         {
+            // Don't continue if placement is default.
+            if (placement.Equals(default(WindowPlacement)))
+            {
+                return;
+            }
+
             placement.Length = Marshal.SizeOf(typeof(WindowPlacement));
 
             // Restore window to normal state if minimized.

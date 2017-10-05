@@ -33,7 +33,7 @@ namespace WpfWindowPlacement
             var window = (Window)sender;
             var placement = (WindowPlacement)e.NewValue;
 
-            SetWindowPlacement(window, placement);
+            WindowPlacementFunctions.SetPlacement(window, placement);
         }
 
         private static void OnTrackPlacementChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
@@ -66,16 +66,7 @@ namespace WpfWindowPlacement
             var window = (Window)sender;
             var placement = GetPlacement(window);
 
-            SetWindowPlacement(window, placement);
-        }
-
-        private static void SetWindowPlacement(Window window, WindowPlacement placement)
-        {
-            // Set window's placement to placement property if it's not default.
-            if (!placement.Equals(default(WindowPlacement)))
-            {
-                WindowPlacementFunctions.SetPlacement(window, placement);
-            }
+            WindowPlacementFunctions.SetPlacement(window, placement);
         }
     }
 }
