@@ -57,9 +57,9 @@ namespace WpfWindowPlacement
             placement.Length = Marshal.SizeOf(typeof(WindowPlacement));
 
             // Restore window to normal state if minimized.
-            if (placement.ShowCommand == WindowPlacementShowCommands.ShowMinimized)
+            if (placement.ShowCommand == WindowPlacementShowCommand.ShowMinimized)
             {
-                placement.ShowCommand = WindowPlacementShowCommands.ShowNormal;
+                placement.ShowCommand = WindowPlacementShowCommand.ShowNormal;
             }
 
             // P/Invoke win32 method to set the window's placement.

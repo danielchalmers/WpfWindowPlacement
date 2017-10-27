@@ -67,7 +67,7 @@
     <Compile Include="WindowPlacementFunctions.cs" />
     <Compile Include="WindowPlacement.cs" />
     <Compile Include="WindowPlacementProperties.cs" />
-    <Compile Include="WindowPlacementShowCommands.cs" />
+    <Compile Include="WindowPlacementShowCommand.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

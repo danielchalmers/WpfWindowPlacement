@@ -24,7 +24,7 @@ namespace WpfWindowPlacement
         /// <summary>
         /// The current show state of the window.
         /// </summary>
-        public WindowPlacementShowCommands ShowCommand;
+        public WindowPlacementShowCommand ShowCommand;
 
         /// <summary>
         /// The coordinates of the window's upper-left corner when the window is minimized.

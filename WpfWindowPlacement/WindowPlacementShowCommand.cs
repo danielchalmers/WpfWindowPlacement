@@ -3,7 +3,7 @@
     /// <summary>
     /// The current show state of the window.
     /// </summary>
-    public enum WindowPlacementShowCommands : uint
+    public enum WindowPlacementShowCommand : uint
     {
         /// <summary>
         /// Hides the window and activates another window.
