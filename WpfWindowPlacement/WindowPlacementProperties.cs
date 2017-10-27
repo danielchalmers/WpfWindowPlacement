@@ -83,6 +83,7 @@ namespace WpfWindowPlacement
             var window = (Window)sender;
             var placement = WindowPlacementFunctions.GetPlacement(window);
 
+            // Set PlacementProperty to sender window placement.
             SetPlacement(window, placement);
         }
 
@@ -91,6 +92,7 @@ namespace WpfWindowPlacement
             var window = (Window)sender;
             var placement = GetPlacement(window);
 
+            // Set sender window's placement to PlacementProperty.
             WindowPlacementFunctions.SetPlacement(window, placement);
         }
     }

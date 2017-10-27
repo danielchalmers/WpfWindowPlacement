@@ -19,9 +19,14 @@ namespace WpfWindowPlacement
         {
             var placement = new WindowPlacement
             {
+                // The length member of WindowPlacement must be set to sizeof(WindowPlacement).
+                // If this member is not set correctly, the P/Invoke function returns false.
                 Length = Marshal.SizeOf(typeof(WindowPlacement))
             };
+
+            // P/Invoke win32 method to get the window's placement.
             NativeMethods.GetWindowPlacement(windowHandle, out placement);
+
             return placement;
         }
 
@@ -47,6 +52,8 @@ namespace WpfWindowPlacement
                 return;
             }
 
+            // The length member of WindowPlacement must be set to sizeof(WindowPlacement).
+            // If this member is not set correctly, the P/Invoke function returns false.
             placement.Length = Marshal.SizeOf(typeof(WindowPlacement));
 
             // Restore window to normal state if minimized.
@@ -55,6 +62,7 @@ namespace WpfWindowPlacement
                 placement.ShowCommand = WindowPlacementShowCommands.ShowNormal;
             }
 
+            // P/Invoke win32 method to set the window's placement.
             NativeMethods.SetWindowPlacement(windowHandle, ref placement);
         }
 
