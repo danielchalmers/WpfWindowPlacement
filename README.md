@@ -1,40 +1,40 @@
 # WpfWindowPlacement
-[SetWindowPlacement](https://msdn.microsoft.com/en-us/library/windows/desktop/ms633544.aspx) and [GetWindowPlacement](https://msdn.microsoft.com/en-us/library/windows/desktop/ms633518.aspx) helpers for WPF applications.
+[WINDOWPLACEMENT](https://msdn.microsoft.com/en-us/library/windows/desktop/ms632611.aspx) helpers for WPF.
 
-Available from NuGet: https://www.nuget.org/packages/WpfWindowPlacement.
+Available from NuGet: https://nuget.org/packages/WpfWindowPlacement.
 
 ## How to use
-### Code-behind:
-Include the namespace.
+### Code-behind
+Include namespace.
 
     using WpfWindowPlacement;
 
-Define a `WindowPlacement` property.
+Define a [`WindowPlacement`](WpfWindowPlacement/WindowPlacement.cs) property.
 
-    WindowPlacement PlacementProperty { get; set; }
+    WindowPlacement MyPlacement { get; set; }
 	
-Get window size, position, state and assign to `PlacementProperty`.  
-This has to be called after the window has been initialized.
+Get window size, position, and state, and assign to `MyPlacement`.  
+This must be called after the window has been initialized.
 
-	PlacementProperty = WindowPlacementFunctions.GetPlacement(this);
+    MyPlacement = WindowPlacementFunctions.GetPlacement(this);
 
-Set window size, position, state to `PlacementProperty`.
+Set window size, position, state to `MyPlacement`.
 
-	WindowPlacementFunctions.SetPlacement(this, PlacementProperty);
+    WindowPlacementFunctions.SetPlacement(this, MyPlacement);
 
-### XAML:
-Include the namespace.
+### XAML
+Include namespace.
 
     xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
 
-Bind window size, position, state to a `WindowPlacement` property.
+Bind window size, position, and state to a [`WindowPlacement`](WpfWindowPlacement/WindowPlacement.cs) property.
 
-	wp:WindowPlacementProperties.Placement="{Binding PlacementProperty}"
+    wp:WindowPlacementProperties.Placement="{Binding MyPlacement}"
 
 Enable placement tracking.
 
-	wp:WindowPlacementProperties.TrackPlacement="True"
+    wp:WindowPlacementProperties.TrackPlacement="True"
 
 
 ## License
-Licensed with the [MIT License](LICENSE.md).
+[MIT License](LICENSE.md).
