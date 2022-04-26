@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using WindowPlacementExample.Properties;
 using WpfWindowPlacement;
@@ -13,6 +14,14 @@ namespace WindowPlacementExample
         public MainWindow()
         {
             InitializeComponent();
+
+            Settings.Default.PropertyChanged += Settings_PropertyChanged;
+        }
+
+        private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if(e.PropertyName == nameof(Settings.Default.MainWindowPlacement))
+                PlacementPropertyLog.Text += DateTime.Now.ToLongTimeString() + ": Placement property updated!" + Environment.NewLine;
         }
 
         private void Window_Closed(object sender, EventArgs e)

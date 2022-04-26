@@ -4,17 +4,18 @@
         xmlns:local="clr-namespace:WindowPlacementExample"
         xmlns:p="clr-namespace:WindowPlacementExample.Properties"
         Title="Window Placement Example"
-        Height="300"
+        Height="400"
         Width="500"
         FontSize="24"
         Closed="Window_Closed"
         xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
-        wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static p:Settings.Default}}"
-        wp:WindowPlacementProperties.TrackPlacement="True">
+        wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static p:Settings.Default}}">
 	<Grid Margin="5">
 
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
+			<RowDefinition Height="5" />
+			<RowDefinition Height="100" />
 			<RowDefinition Height="5" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
@@ -35,7 +36,12 @@
 			        Click="ManualLoadButton_Click" />
 		</Grid>
 
-		<Viewbox Grid.Row="2">
+		<TextBox x:Name="PlacementPropertyLog"
+		         Grid.Row="2"
+		         IsReadOnly="True"
+		         FontSize="12" />
+
+		<Viewbox Grid.Row="4">
 			<TextBlock Text="Placement is got and set automatically by attached property" />
 		</Viewbox>
 
