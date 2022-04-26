@@ -2,7 +2,7 @@
   
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net40;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
