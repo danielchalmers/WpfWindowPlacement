@@ -29,7 +29,7 @@ namespace WpfWindowPlacement
                 typeof(bool),
                 typeof(WindowPlacementProperties),
                 new PropertyMetadata(false, OnTrackPlacementChanged));
-       
+
         public static WindowPlacement GetPlacement(Window sender) => (WindowPlacement)sender.GetValue(PlacementProperty);
         public static void SetPlacement(Window sender, WindowPlacement value) => sender.SetValue(PlacementProperty, value);
         public static bool GetTrackPlacement(Window sender) => (bool)sender.GetValue(TrackPlacementProperty);
@@ -37,6 +37,9 @@ namespace WpfWindowPlacement
 
         private static void OnPlacementChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
+            if (DesignerProperties.GetIsInDesignMode(sender))
+                return;
+
             var window = (Window)sender;
             var placement = (WindowPlacement)e.NewValue;
 
@@ -45,6 +48,9 @@ namespace WpfWindowPlacement
 
         private static void OnTrackPlacementChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
+            if (DesignerProperties.GetIsInDesignMode(sender))
+                return;
+
             var window = (Window)sender;
             var track = (bool)e.NewValue;
 
