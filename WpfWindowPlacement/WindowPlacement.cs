@@ -11,8 +11,7 @@ namespace WpfWindowPlacement
     public struct WindowPlacement
     {
         /// <summary>
-        /// <para>The length of the structure, in bytes.</para>
-        /// <para>This is automatically set in <see cref="WindowPlacementFunctions"/> methods.</para>
+        /// The length of the structure, in bytes.
         /// </summary>
         public int Length;
 

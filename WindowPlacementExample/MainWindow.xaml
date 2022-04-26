@@ -1,44 +1,43 @@
 ﻿<Window x:Class="WindowPlacementExample.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowPlacementExample"
-        xmlns:properties="clr-namespace:WindowPlacementExample.Properties"
-        mc:Ignorable="d"
+        xmlns:p="clr-namespace:WindowPlacementExample.Properties"
         Title="Window Placement Example"
         Height="300"
         Width="500"
         FontSize="24"
         Closed="Window_Closed"
         xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
-        wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static properties:Settings.Default}}"
+        wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static p:Settings.Default}}"
         wp:WindowPlacementProperties.TrackPlacement="True">
-    <Grid Margin="5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="5" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+	<Grid Margin="5">
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="5" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*" />
+			<RowDefinition Height="5" />
+			<RowDefinition Height="Auto" />
+		</Grid.RowDefinitions>
 
-            <Button Grid.Column="0"
-                    Content="Manual _Save"
-                    Click="ManualSaveButton_Click" />
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="5" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
 
-            <Button Grid.Column="2"
-                    Content="Manual _Load"
-                    Click="ManualLoadButton_Click" />
-        </Grid>
+			<Button Grid.Column="0"
+			        Content="Manual _Save"
+			        Click="ManualSaveButton_Click" />
 
-        <Viewbox Grid.Row="2">
-            <TextBlock Text="Placement is got and set automatically by attached property" />
-        </Viewbox>
-    </Grid>
+			<Button Grid.Column="2"
+			        Content="Manual _Load"
+			        Click="ManualLoadButton_Click" />
+		</Grid>
+
+		<Viewbox Grid.Row="2">
+			<TextBlock Text="Placement is got and set automatically by attached property" />
+		</Viewbox>
+
+	</Grid>
 </Window>
