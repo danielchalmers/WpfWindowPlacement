@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     tags:
-      - "v*"
+      - 'v*'
 
 jobs:
   deploy:
@@ -17,7 +17,7 @@ jobs:
         run: dotnet pack "WpfWindowPlacement/WpfWindowPlacement.csproj" -c:Release -o "publish"
 
       - name: Upload to NuGet
-        run: dotnet nuget push --skip-duplicate --api-key ${{ secrets.NUGET_TOKEN }} --source 'https://api.nuget.org/v3/index.json' "publish/*nupkg"
+        run: dotnet nuget push --skip-duplicate --api-key ${{ secrets.NUGET_TOKEN }} --source 'https://api.nuget.org/v3/index.json' "publish\*nupkg"
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v1
