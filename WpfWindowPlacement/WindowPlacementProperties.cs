@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Interop;
 
 namespace WpfWindowPlacement;
 
@@ -28,18 +29,20 @@ public static class WindowPlacementProperties
         var window = (Window)sender;
         var placement = (WindowPlacement)e.NewValue;
 
-        // Set the window's placement from the property as soon as we have an hWnd to work with.
-        if (window.IsInitialized)
+        // Does the window have a handle?
+        if (new WindowInteropHelper(window).Handle == IntPtr.Zero)
         {
-            WindowPlacementFunctions.SetPlacement(window, placement);
-        }
-        else
-        {
-            // Unsubscribe first in case we already were subscribed so we only have one subscription.
+            // Wait until the source has been initialized and the handle is available.
             window.SourceInitialized -= Window_SourceInitialized;
             window.SourceInitialized += Window_SourceInitialized;
         }
+        else
+        {
+            // The handle is available so we can set the placement for it.
+            WindowPlacementFunctions.SetPlacement(window, placement);
+        }
 
+        // Unsubscribe first in case we already were subscribed so that we only have one subscription.
         window.Closing -= UpdatePlacementProperty;
         window.Closing += UpdatePlacementProperty;
     }
