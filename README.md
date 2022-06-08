@@ -1,40 +1,39 @@
-# WpfWindowPlacement
-[WINDOWPLACEMENT](https://msdn.microsoft.com/en-us/library/windows/desktop/ms632611.aspx) helpers for WPF.
+# WpfWindowPlacement [![NuGet](https://img.shields.io/nuget/v/WpfWindowPlacement.svg)](https://www.nuget.org/packages/WpfWindowPlacement)
 
-Available from NuGet: https://nuget.org/packages/WpfWindowPlacement.
+[WINDOWPLACEMENT](https://docs.microsoft.com/en-us/windows/win32/api/winuser/ns-winuser-windowplacement) helpers for WPF.
 
-## How to use
-### Code-behind
-Include namespace.
-
-    using WpfWindowPlacement;
+## Example
 
 Define a [`WindowPlacement`](WpfWindowPlacement/WindowPlacement.cs) property.
 
-    WindowPlacement MyPlacement { get; set; }
-	
-Get window size, position, and state, and assign to `MyPlacement`.  
-This must be called after the window has been initialized.
+```csharp
+using WpfWindowPlacement;
+WindowPlacement MyPlacement { get; set; }
+```
 
-    MyPlacement = WindowPlacementFunctions.GetPlacement(this);
-
-Set window size, position, state to `MyPlacement`.
-
-    WindowPlacementFunctions.SetPlacement(this, MyPlacement);
+Now use it in the XAML attached property or code-behind functions.
 
 ### XAML
-Include namespace.
 
-    xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
+```xaml
+xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
 
-Bind window size, position, and state to a [`WindowPlacement`](WpfWindowPlacement/WindowPlacement.cs) property.
+<!-- Update size, position, and state on SourceInitialized and Closing -->
+wp:WindowPlacementProperties.Placement="{Binding MyPlacement}"
+```
 
-    wp:WindowPlacementProperties.Placement="{Binding MyPlacement}"
+### Code-behind
 
-Enable placement tracking.
+```csharp
+using WpfWindowPlacement;
 
-    wp:WindowPlacementProperties.TrackPlacement="True"
+// Get window size, position, and state, and assign to MyPlacement.
+MyPlacement = WindowPlacementFunctions.GetPlacement(this);
 
+// Set window size, position, and state to the value of MyPlacement.
+WindowPlacementFunctions.SetPlacement(this, MyPlacement);
+```
 
 ## License
-[MIT License](LICENSE.md).
+
+[MIT License](LICENSE.md)
