@@ -14,9 +14,9 @@ public static class WindowPlacementProperties
     public static readonly DependencyProperty PlacementProperty =
         DependencyProperty.RegisterAttached(
             "Placement",
-            typeof(WindowPlacement),
+            typeof(WindowPlacement?),
             typeof(WindowPlacementProperties),
-            new FrameworkPropertyMetadata(default(WindowPlacement), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPlacementPropertyChanged));
+            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPlacementPropertyChanged));
 
     public static WindowPlacement GetPlacement(Window sender) => (WindowPlacement)sender.GetValue(PlacementProperty);
     public static void SetPlacement(Window sender, WindowPlacement value) => sender.SetValue(PlacementProperty, value);
