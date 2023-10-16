@@ -1,8 +1,8 @@
 <Project>
-  
+
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <TargetFrameworks>net462;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
