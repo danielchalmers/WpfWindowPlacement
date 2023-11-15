@@ -18,7 +18,7 @@ Now use it in the XAML attached property or code-behind functions.
 ```xaml
 xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
 
-<!-- Update size, position, and state on SourceInitialized and Deactivated -->
+<!-- Update size, position, and state on SourceInitialized and Closing -->
 wp:WindowPlacementProperties.Placement="{Binding MyPlacement}"
 ```
 
