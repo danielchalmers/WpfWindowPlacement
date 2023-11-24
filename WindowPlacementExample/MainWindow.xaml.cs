@@ -18,10 +18,13 @@ public partial class MainWindow : Window
 		Settings.Default.PropertyChanged += Settings_PropertyChanged;
 	}
 
+	private void Log(string text) =>
+			PlacementPropertyLog.Text = DateTime.Now.ToLongTimeString() + ": " + text + Environment.NewLine + PlacementPropertyLog.Text;
+
 	private void Settings_PropertyChanged(object sender, PropertyChangedEventArgs e)
 	{
 		if (e.PropertyName == nameof(Settings.Default.MainWindowPlacement))
-			PlacementPropertyLog.Text += DateTime.Now.ToLongTimeString() + ": Placement property updated!" + Environment.NewLine;
+			Log("Placement property updated!");
 	}
 
 	private void Window_Closed(object sender, EventArgs e)
@@ -34,10 +37,14 @@ public partial class MainWindow : Window
 		Settings.Default.MainWindowPlacement = WindowPlacementFunctions.GetPlacement(this);
 
 		Settings.Default.Save();
+
+		Log("Saved to settings!");
 	}
 
 	private void ManualLoadButton_Click(object sender, RoutedEventArgs e)
 	{
 		WindowPlacementFunctions.SetPlacement(this, Settings.Default.MainWindowPlacement);
+
+		Log("Loaded from settings!");
 	}
 }

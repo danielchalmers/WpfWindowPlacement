@@ -6,44 +6,43 @@
         Title="Window Placement Example"
         Height="400"
         Width="500"
-        FontSize="24"
         Closed="Window_Closed"
         xmlns:wp="clr-namespace:WpfWindowPlacement;assembly=WpfWindowPlacement"
         wp:WindowPlacementProperties.Placement="{Binding Path=MainWindowPlacement, Source={x:Static p:Settings.Default}}">
 	<Grid Margin="5">
-
 		<Grid.RowDefinitions>
-			<RowDefinition Height="*" />
-			<RowDefinition Height="5" />
-			<RowDefinition Height="100" />
-			<RowDefinition Height="5" />
+			<RowDefinition Height="0.5*" />
+			<RowDefinition Height="4" />
+			<RowDefinition Height="0.5*" />
+			<RowDefinition Height="4" />
 			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 
 		<Grid Grid.Row="0">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*" />
-				<ColumnDefinition Width="5" />
+				<ColumnDefinition Width="4" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
 			<Button Grid.Column="0"
 			        Content="Manual _Save"
-			        Click="ManualSaveButton_Click" />
+			        Click="ManualSaveButton_Click"
+			        FontSize="24" />
 
 			<Button Grid.Column="2"
 			        Content="Manual _Load"
-			        Click="ManualLoadButton_Click" />
+			        Click="ManualLoadButton_Click"
+			        FontSize="24" />
 		</Grid>
 
 		<TextBox x:Name="PlacementPropertyLog"
 		         Grid.Row="2"
-		         IsReadOnly="True"
-		         FontSize="12" />
+		         IsReadOnly="True" />
 
-		<Viewbox Grid.Row="4">
-			<TextBlock Text="Placement is got and set automatically by attached property" />
-		</Viewbox>
-
+		<TextBlock Grid.Row="4"
+		           TextWrapping="WrapWithOverflow"
+		           TextAlignment="Center"
+		           Text="Placement is bound to an app setting by the attached property and will be restored next launch" />
 	</Grid>
 </Window>
