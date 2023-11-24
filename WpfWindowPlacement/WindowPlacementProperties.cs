@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Interop;
+using Microsoft.Win32;
 
 namespace WpfWindowPlacement;
 
@@ -11,54 +12,56 @@ namespace WpfWindowPlacement;
 /// </summary>
 public static class WindowPlacementProperties
 {
-    public static readonly DependencyProperty PlacementProperty =
-        DependencyProperty.RegisterAttached(
-            "Placement",
-            typeof(WindowPlacement?),
-            typeof(WindowPlacementProperties),
-            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPlacementPropertyChanged));
+	public static readonly DependencyProperty PlacementProperty =
+		DependencyProperty.RegisterAttached(
+			"Placement",
+			typeof(WindowPlacement?),
+			typeof(WindowPlacementProperties),
+			new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnPlacementPropertyChanged));
 
-    public static WindowPlacement GetPlacement(Window sender) => (WindowPlacement)sender.GetValue(PlacementProperty);
-    public static void SetPlacement(Window sender, WindowPlacement value) => sender.SetValue(PlacementProperty, value);
+	public static WindowPlacement GetPlacement(Window sender) => (WindowPlacement)sender.GetValue(PlacementProperty);
+	public static void SetPlacement(Window sender, WindowPlacement value) => sender.SetValue(PlacementProperty, value);
 
-    private static void OnPlacementPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-    {
-        if (DesignerProperties.GetIsInDesignMode(sender))
-            return;
+	private static void OnPlacementPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+	{
+		if (DesignerProperties.GetIsInDesignMode(sender))
+			return;
 
-        var window = (Window)sender;
-        var placement = (WindowPlacement)e.NewValue;
+		var window = (Window)sender;
+		var placement = (WindowPlacement)e.NewValue;
 
-        // Does the window have a handle?
-        if (new WindowInteropHelper(window).Handle == IntPtr.Zero)
-        {
-            // Wait until the source has been initialized and the handle is available.
-            window.SourceInitialized -= Window_SourceInitialized;
-            window.SourceInitialized += Window_SourceInitialized;
-        }
-        else
-        {
-            // The handle is available so we can set the placement for it.
-            WindowPlacementFunctions.SetPlacement(window, placement);
-        }
+		// Does the window have a handle?
+		if (new WindowInteropHelper(window).Handle == IntPtr.Zero)
+		{
+			// Wait until the source has been initialized and the handle is available.
+			window.SourceInitialized -= Window_SourceInitialized;
+			window.SourceInitialized += Window_SourceInitialized;
+		}
+		else
+		{
+			// The handle is available so we can set the placement for it.
+			WindowPlacementFunctions.SetPlacement(window, placement);
+		}
 
-        // Unsubscribe first in case we already were subscribed so that we only have one subscription.
-        window.Closing -= UpdatePlacementProperty;
-        window.Closing += UpdatePlacementProperty;
-    }
+		// Unsubscribe first in case we already were subscribed so that we only have one subscription.
+		window.Closing -= UpdatePlacementProperty;
+		SystemEvents.SessionEnding -= UpdatePlacementProperty;
+		window.Closing += UpdatePlacementProperty;
+		SystemEvents.SessionEnding += UpdatePlacementProperty;
+	}
 
-    private static void Window_SourceInitialized(object sender, EventArgs e)
-    {
-        var window = (Window)sender;
+	private static void Window_SourceInitialized(object sender, EventArgs e)
+	{
+		var window = (Window)sender;
 
-        window.SetPlacement(GetPlacement(window));
-    }
+		window.SetPlacement(GetPlacement(window));
+	}
 
-    private static void UpdatePlacementProperty(object sender, EventArgs e)
-    {
-        var window = (Window)sender;
-        var placement = WindowPlacementFunctions.GetPlacement(window);
+	private static void UpdatePlacementProperty(object sender, EventArgs e)
+	{
+		var window = (Window)sender;
+		var placement = WindowPlacementFunctions.GetPlacement(window);
 
-        SetPlacement(window, placement);
-    }
+		SetPlacement(window, placement);
+	}
 }
